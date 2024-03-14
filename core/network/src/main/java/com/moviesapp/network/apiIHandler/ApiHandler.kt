@@ -21,9 +21,10 @@ suspend fun <T> safeApiCall(
     }
 }
 
-fun <T, R> Response<T>.mapResponseData(transformation: (T) -> R): Either<AppErrors, R> {
+fun <T, R> Response<T>.mapResponseData(transformation: (T) -> R?): Either<AppErrors, R> {
     val responseBody = body()
-    return if (isSuccessful && responseBody != null) transformation(responseBody).right()
+    return if (isSuccessful && responseBody != null) transformation(responseBody)?.right()
+        ?: AppErrors.General("Failed To map data").left()
     else AppErrors.General(message()).left()
 }
 

@@ -23,8 +23,10 @@ android {
 
         val apiKey = properties.getProperty("API_KEY")
         val baseUrl = properties.getProperty("BASE_URL")
+        val imageBaseUrl = properties.getProperty("IMAGES_BASE_URL")
         buildConfigField("String", "API_KEY", "\"$apiKey\"")
         buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+        buildConfigField("String", "IMAGES_BASE_URL", "\"$imageBaseUrl\"")
     }
 
     buildTypes {
