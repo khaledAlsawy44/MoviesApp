@@ -11,13 +11,12 @@ import javax.inject.Singleton
 class AuthorizationInterceptor @Inject constructor(
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        val request = chain.request().apply {
-            this.newBuilder().url(
-                url.newBuilder()
-                    .addQueryParameter(PARAMETER_API_KEY, BuildConfig.API_KEY)
-                    .build()
-            ).build()
-        }
+        var request = chain.request()
+        val url = request.url
+            .newBuilder()
+            .addQueryParameter(PARAMETER_API_KEY, BuildConfig.API_KEY)
+            .build()
+        request = request.newBuilder().url(url).build()
 
         return chain.proceed(request)
     }

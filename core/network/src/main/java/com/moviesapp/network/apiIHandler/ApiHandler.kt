@@ -37,12 +37,12 @@ fun <T, R> Response<PaginationResponse<T>>.mapPaginatedResponseData(
         isSuccessful &&
         body != null &&
         body.page != null &&
-        body.totalPages != null &&
+        body.total_pages != null &&
         body.results != null
     ) {
         PaginatedData(
             page = CurrentPage(body.page),
-            totalPages = TotalPages(body.totalPages),
+            totalPages = TotalPages(body.total_pages),
             list = body.results.mapNotNull { element -> element?.let { transformation(it) } }
         ).right()
     } else AppErrors.General(message()).left()

@@ -2,6 +2,7 @@ package com.moviesapp.network.di
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.moviesapp.network.BuildConfig
 import com.moviesapp.network.interceptors.AuthorizationInterceptor
+import com.moviesapp.network.services.MoviesService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,10 +37,14 @@ object RetrofitModule {
         val json = Json { ignoreUnknownKeys = true }
         val contentType = "application/json".toMediaType()
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL + "api/")
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(json.asConverterFactory(contentType))
             .client(okHttpClient)
             .build()
     }
 
+    @Provides
+    fun provideMoviesService(retrofit: Retrofit): MoviesService {
+        return retrofit.create(MoviesService::class.java)
+    }
 }

@@ -1,17 +1,16 @@
-package com.moviesApp.moviesapp.ui
+package com.moviesApp.moviesapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.moviesApp.designSystem.theme.MoviesAppTheme
 import com.moviesApp.moviesapp.navigation.navGraphs.AppNavigationGraph
-import com.moviesApp.moviesapp.ui.theme.MoviesAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 

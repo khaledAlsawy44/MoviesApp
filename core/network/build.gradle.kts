@@ -3,6 +3,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.hilt)
 
     kotlin("plugin.serialization") version ("1.9.0")
     kotlin("kapt")

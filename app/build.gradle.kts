@@ -53,6 +53,9 @@ android {
 
 dependencies {
     implementation(project(":navigation"))
+    implementation(project(":core:common"))
+    implementation(project(":features:moviesList"))
+    implementation(project(":design-system"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)

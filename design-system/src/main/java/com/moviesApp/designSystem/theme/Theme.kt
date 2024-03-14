@@ -1,7 +1,10 @@
-package com.moviesApp.moviesapp.ui.theme
+package com.moviesApp.designSystem.theme
 
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
 import android.app.Activity
 import android.os.Build
+import android.view.Window
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -10,32 +13,41 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
+
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = PrimaryColor,
+    secondary = SecondaryColor,
+    secondaryContainer = SecondaryContainerColor,
+    background = DarkColorBackground,
+    surface = DarkColorSurface,
+    onPrimary = OnPrimaryColor,
+    onSecondary = OnPrimaryColor,
+    onBackground = DarkColorOnBackground,
+    onSurface = DarkColorOnSurface,
+    error = ErrorColor,
+    onError = OnErrorColor
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = PrimaryColor,
+    secondary = SecondaryColor,
+    secondaryContainer = SecondaryContainerColor,
+    background = LightColorBackground,
+    surface = LightColorSurface,
+    onPrimary = OnPrimaryColor,
+    onSecondary = OnPrimaryColor,
+    onBackground = LightColorOnBackground,
+    onSurface = LightColorOnSurface,
+    error = ErrorColor,
+    onError = OnErrorColor
 )
+
 
 @Composable
 fun MoviesAppTheme(
@@ -63,7 +75,21 @@ fun MoviesAppTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
         content = content
     )
 }
+
+fun animateStatusBarColor(window: Window, targetColor: Int, duration: Long) {
+    val initialColor = Color(window.statusBarColor)
+
+    val colorAnimator = ValueAnimator.ofObject(ArgbEvaluator(), initialColor.toArgb(), targetColor)
+    colorAnimator.duration = duration
+
+    colorAnimator.addUpdateListener { animator ->
+        val animatedColor = animator.animatedValue as Int
+        window.statusBarColor = animatedColor
+    }
+
+    colorAnimator.start()
+}
+

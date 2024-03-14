@@ -1,12 +1,10 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.hilt)
-    kotlin("kapt")
 }
 
 android {
-    namespace = "com.moviesApp.data"
+    namespace = "com.moviesApp.designSystem"
     compileSdk = 34
 
     defaultConfig {
@@ -29,6 +27,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
     kotlinOptions {
         jvmTarget = "17"
     }
@@ -36,19 +40,15 @@ android {
 
 dependencies {
 
-    implementation(project(":business-models"))
-    implementation(project(":core:network"))
-
     implementation(libs.core.ktx)
     implementation(libs.androidx.appcompat)
 
-    implementation(libs.coroutines)
-    implementation(libs.coroutines.android)
-
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
-
-    implementation(libs.arrow)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.ui)
+    implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.material3)
+    implementation(libs.coil)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
