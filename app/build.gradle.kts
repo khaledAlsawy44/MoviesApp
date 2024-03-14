@@ -62,9 +62,10 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
-    implementation(libs.hilt.android)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
