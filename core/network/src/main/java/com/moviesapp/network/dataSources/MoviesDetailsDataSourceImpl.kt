@@ -5,7 +5,7 @@ import com.moviesApp.business_models.MovieDetails
 import com.moviesApp.business_models.MovieId
 import com.moviesapp.network.apiIHandler.mapResponseData
 import com.moviesapp.network.apiIHandler.safeApiCall
-import com.moviesapp.network.entities.AppErrors
+import com.moviesApp.business_models.AppErrors
 import com.moviesapp.network.mappers.toMovieDetails
 import com.moviesapp.network.services.MoviesService
 import javax.inject.Inject

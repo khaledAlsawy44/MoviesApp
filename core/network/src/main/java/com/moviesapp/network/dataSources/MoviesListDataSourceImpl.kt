@@ -6,7 +6,7 @@ import com.moviesApp.business_models.Movie
 import com.moviesApp.business_models.PaginatedData
 import com.moviesapp.network.apiIHandler.mapPaginatedResponseData
 import com.moviesapp.network.apiIHandler.safeApiCall
-import com.moviesapp.network.entities.AppErrors
+import com.moviesApp.business_models.AppErrors
 import com.moviesapp.network.mappers.toMovie
 import com.moviesapp.network.services.MoviesService
 import javax.inject.Inject

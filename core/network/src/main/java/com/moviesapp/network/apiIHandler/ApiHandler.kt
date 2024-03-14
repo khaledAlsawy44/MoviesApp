@@ -6,7 +6,7 @@ import arrow.core.right
 import com.moviesApp.business_models.CurrentPage
 import com.moviesApp.business_models.PaginatedData
 import com.moviesApp.business_models.TotalPages
-import com.moviesapp.network.entities.AppErrors
+import com.moviesApp.business_models.AppErrors
 import com.moviesapp.network.entities.PaginationResponse
 import retrofit2.Response
 
