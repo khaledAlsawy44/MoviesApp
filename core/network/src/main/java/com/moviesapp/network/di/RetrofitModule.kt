@@ -1,8 +1,7 @@
-package com.moviesApp.network.di
-
+package com.moviesapp.network.di
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.moviesApp.mylibrary.BuildConfig
-import com.moviesApp.network.interceptors.AuthorizationInterceptor
+import com.moviesapp.network.BuildConfig
+import com.moviesapp.network.interceptors.AuthorizationInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

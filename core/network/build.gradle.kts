@@ -12,7 +12,7 @@ val properties = Properties()
 properties.load(project.rootProject.file("local.properties").inputStream())
 
 android {
-    namespace = "com.moviesApp.mylibrary"
+    namespace = "com.moviesapp.network"
     compileSdk = 34
 
     defaultConfig {

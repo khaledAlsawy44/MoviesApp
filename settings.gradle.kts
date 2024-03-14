@@ -17,5 +17,5 @@ rootProject.name = "MoviesApp"
 include(":app")
 include(":navigation")
 include(":core")
-include(":core:network")
 include(":business-models")
+include(":core:network")

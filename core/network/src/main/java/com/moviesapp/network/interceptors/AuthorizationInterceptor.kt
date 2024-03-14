@@ -1,7 +1,7 @@
-package com.moviesApp.network.interceptors
+package com.moviesapp.network.interceptors
 
-import com.moviesApp.mylibrary.BuildConfig
-import com.moviesApp.network.PARAMETER_API_KEY
+import com.moviesapp.network.BuildConfig
+import com.moviesapp.network.PARAMETER_API_KEY
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject

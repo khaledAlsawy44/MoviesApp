@@ -1,4 +1,4 @@
-package com.moviesApp.network.apiIHandler
+package com.moviesapp.network.apiIHandler
 
 import arrow.core.Either
 import arrow.core.left
@@ -6,8 +6,8 @@ import arrow.core.right
 import com.moviesApp.business_models.CurrentPage
 import com.moviesApp.business_models.PaginatedData
 import com.moviesApp.business_models.TotalPages
-import com.moviesApp.network.entities.AppErrors
-import com.moviesApp.network.entities.PaginationResponse
+import com.moviesapp.network.entities.AppErrors
+import com.moviesapp.network.entities.PaginationResponse
 import retrofit2.Response
 
 suspend fun <T> safeApiCall(

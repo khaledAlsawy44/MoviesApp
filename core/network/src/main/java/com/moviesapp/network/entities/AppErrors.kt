@@ -1,4 +1,4 @@
-package com.moviesApp.network.entities
+package com.moviesapp.network.entities
 
 
 sealed class AppErrors {
