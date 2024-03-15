@@ -10,7 +10,7 @@ plugins {
 }
 
 val properties = Properties()
-properties.load(project.rootProject.file("local.properties").inputStream())
+properties.load(project.rootProject.file("gradle.properties").inputStream())
 
 android {
     namespace = "com.moviesapp.network"
