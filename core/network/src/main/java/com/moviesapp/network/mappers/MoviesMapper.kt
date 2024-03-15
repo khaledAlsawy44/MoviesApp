@@ -29,7 +29,7 @@ fun MovieResponse.toMovie(): Movie? {
     vote_count ?: return null
     id ?: return null
 
-    val rate = DecimalFormat("#,0").format(vote_average).toDouble()
+    val rate = DecimalFormat("#.0").format(vote_average).toDouble()
     return Movie(
         id = MovieId(id),
         title = MovieTitle(title),

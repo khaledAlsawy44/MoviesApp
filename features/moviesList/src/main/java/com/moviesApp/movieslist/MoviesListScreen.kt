@@ -22,7 +22,7 @@ fun MoviesListScreenContent(
     state: MoviesListState,
     onAction: (MoviesListActions) -> Unit
 ) {
-    var searchQuery by remember { mutableStateOf("") }
+    var searchQuery by remember { mutableStateOf(if (state is MoviesListState.Success) state.searchQuery else "") }
 
     Column(Modifier.padding(horizontal = 16.dp)) {
         VerticalSpace(16.dp)
