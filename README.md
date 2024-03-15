@@ -8,10 +8,10 @@ technologies and follows best practices to provide a seamless user experience.
 ## Screenshots
 
 ![Screenshot 1](screenshots/img1.jpg)
-*Description of the first screenshot.*
+*Movies List.*
 
 ![Screenshot 2](screenshots/img2.jpg)
-*Description of the second screenshot.*
+*Movie Details.*
 
 ## Technologies Used
 
