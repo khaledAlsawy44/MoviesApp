@@ -1,5 +1,6 @@
 package com.moviesapp.network.mappers
 
+import com.moviesApp.business_models.BackdropUrl
 import com.moviesApp.business_models.Movie
 import com.moviesApp.business_models.MovieDetails
 import com.moviesApp.business_models.MovieGenres
@@ -23,8 +24,8 @@ import java.text.DecimalFormat
 fun MovieResponse.toMovie(): Movie? {
     title ?: return null
     overview ?: return null
-    vote_average ?: return null
     poster_path ?: return null
+    vote_average ?: return null
     vote_count ?: return null
     id ?: return null
 
@@ -36,8 +37,7 @@ fun MovieResponse.toMovie(): Movie? {
         overview = MovieOverview(overview),
         movieRate = MovieRate(rate),
         rateCount = MovieRateCount(vote_count),
-        releaseDate =release_date?.let { MovieReleaseDate(release_date) }
-
+        releaseDate = release_date?.let { MovieReleaseDate(release_date) }
     )
 }
 
@@ -46,8 +46,8 @@ fun MovieDetailsResponse.toMovieDetails(): MovieDetails? {
     title ?: return null
     overview ?: return null
     vote_average ?: return null
-    poster_path ?: return null
     vote_count ?: return null
+    poster_path ?: return null
     status ?: return null
     genres ?: return null
     production_companies ?: return null
@@ -56,15 +56,15 @@ fun MovieDetailsResponse.toMovieDetails(): MovieDetails? {
         id = MovieId(id),
         title = MovieTitle(title),
         posterUrl = MoviePosterUrl("$IMAGES_BASE_URL$poster_path"),
+        backdropUrl = BackdropUrl("$IMAGES_BASE_URL$backdrop_path"),
         overview = MovieOverview(overview),
         rate = MovieRate(vote_average),
         rateCount = MovieRateCount(vote_count),
         status = MovieStatus(status),
         genres = genres.mapNotNull { it.toMovieGenres() },
-        productionCompanies = production_companies.mapNotNull { it.validateCompanies() }
+        productionCompanies = production_companies.mapNotNull { it.validateCompanies() },
+        releaseDate = release_date?.let { MovieReleaseDate(it) }
     )
-
-
 }
 
 

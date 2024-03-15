@@ -11,8 +11,9 @@ import coil.request.ImageRequest
 
 @Composable
 fun ComponentRemoteImage(
+    modifier: Modifier = Modifier,
     imageUrl: String,
-    modifier: Modifier = Modifier
+    scale: ContentScale = ContentScale.Crop
 ) {
     Image(
         modifier = modifier,
@@ -22,6 +23,6 @@ fun ComponentRemoteImage(
                 .build()
         ),
         contentDescription = "",
-        contentScale = ContentScale.Crop
+        contentScale = scale
     )
 }

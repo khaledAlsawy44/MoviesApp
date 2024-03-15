@@ -15,6 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.moviesApp.business_models.Movie
+import com.moviesApp.common.compose.MovieOverview
+import com.moviesApp.common.compose.MovieRate
+import com.moviesApp.common.compose.MovieReleaseDate
+import com.moviesApp.common.compose.MovieTitle
 import com.moviesApp.designSystem.atoms.VerticalSpace
 
 
@@ -43,7 +47,7 @@ fun BoxScope.MovieInfo(
         ) {
             MovieTitle(movie.title)
             VerticalSpace(space = 4.dp)
-            MovieOverview(overview = movie.overview)
+            MovieOverview(overview = movie.overview, lines = 2)
             VerticalSpace(space = 8.dp)
             Row(verticalAlignment = Alignment.Top) {
                 movie.releaseDate?.let { MovieReleaseDate(date = it) }

@@ -1,4 +1,4 @@
-package com.moviesApp.movieslist.compose
+package com.moviesApp.common.compose
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape

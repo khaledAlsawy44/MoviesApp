@@ -1,13 +1,8 @@
-package com.moviesApp.movieslist.compose
+package com.moviesApp.common.compose
 
-import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.moviesApp.business_models.MoviePosterUrl
@@ -15,16 +10,13 @@ import com.moviesApp.designSystem.components.ComponentRemoteImage
 
 
 @Composable
-fun BoxScope.MovieImage(
+fun MovieImage(
+    modifier: Modifier,
     posterUrl: MoviePosterUrl,
     onMovieClicked: () -> Unit
 ) {
     Surface(
-        modifier = Modifier
-            .align(Alignment.BottomStart)
-            .padding(start = 12.dp, bottom = 12.dp)
-            .width(80.dp)
-            .height(125.dp),
+        modifier = modifier,
         shape = RoundedCornerShape(
             topStart = 10.dp,
             bottomEnd = 10.dp,

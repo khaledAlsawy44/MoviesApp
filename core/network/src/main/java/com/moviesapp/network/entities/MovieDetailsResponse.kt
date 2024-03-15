@@ -1,6 +1,8 @@
 package com.moviesapp.network.entities
 
+import com.moviesapp.network.di.ServerLocalDateTimeSerializer
 import kotlinx.serialization.Serializable
+import java.time.LocalDate
 
 @Serializable
 data class MovieDetailsResponse(
@@ -19,7 +21,8 @@ data class MovieDetailsResponse(
     val poster_path: String? = null,
     val production_companies: List<ProductionCompany?>? = null,
     val production_countries: List<ProductionCountry?>? = null,
-    val release_date: String? = null,
+    @Serializable(with = ServerLocalDateTimeSerializer::class)
+    val release_date: LocalDate? = null,
     val revenue: Int? = null,
     val runtime: Int? = null,
     val spoken_languages: List<SpokenLanguage?>? = null,

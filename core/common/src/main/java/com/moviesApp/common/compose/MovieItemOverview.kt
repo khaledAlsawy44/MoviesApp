@@ -1,4 +1,4 @@
-package com.moviesApp.movieslist.compose
+package com.moviesApp.common.compose
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -11,14 +11,29 @@ import com.moviesApp.business_models.MovieOverview
 
 
 @Composable
-fun MovieOverview(overview: MovieOverview) {
+fun MovieOverview(
+    overview: MovieOverview,
+    lines: Int = 2
+) {
     Text(
         modifier = Modifier.padding(end = 16.dp),
         text = overview.value,
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onBackground,
-        maxLines = 2,
-        minLines = 2,
+        maxLines = lines,
+        minLines = lines,
+        overflow = TextOverflow.Ellipsis
+    )
+}
+@Composable
+fun MovieOverview(
+    overview: MovieOverview
+) {
+    Text(
+        modifier = Modifier.padding(end = 16.dp),
+        text = overview.value,
+        style = MaterialTheme.typography.bodyMedium,
+        color = MaterialTheme.colorScheme.onBackground,
         overflow = TextOverflow.Ellipsis
     )
 }

@@ -21,10 +21,12 @@ data class MovieDetails(
     val id: MovieId,
     val title: MovieTitle,
     val posterUrl: MoviePosterUrl,
+    val backdropUrl: BackdropUrl,
     val overview: MovieOverview,
     val rate: MovieRate,
     val rateCount: MovieRateCount,
     val status: MovieStatus,
     val genres: List<MovieGenres>,
-    val productionCompanies: List<ProductionCompanies>
+    val productionCompanies: List<ProductionCompanies>,
+    val releaseDate: MovieReleaseDate?
 )

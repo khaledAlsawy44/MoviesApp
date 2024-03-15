@@ -4,7 +4,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -16,6 +18,7 @@ import com.moviesApp.business_models.MovieRate
 import com.moviesApp.business_models.MovieRateCount
 import com.moviesApp.business_models.MovieReleaseDate
 import com.moviesApp.business_models.MovieTitle
+import com.moviesApp.common.compose.MovieImage
 import com.moviesApp.movieslist.MoviesListActions
 import java.time.LocalDate
 
@@ -33,7 +36,14 @@ fun MovieItem(
         MovieInfo(movie = movie) {
             onAction.invoke(MoviesListActions.OnMoveClicked(movie.id))
         }
-        MovieImage(posterUrl = movie.posterUrl) {
+        MovieImage(
+            modifier = Modifier
+                .align(Alignment.BottomStart)
+                .padding(start = 12.dp, bottom = 12.dp)
+                .width(80.dp)
+                .height(125.dp),
+            posterUrl = movie.posterUrl
+        ) {
             onAction.invoke(MoviesListActions.OnMoveClicked(movie.id))
         }
     }

@@ -1,25 +1,19 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.hilt)
     kotlin("kapt")
 }
 
 android {
-    namespace = "com.example.moviesapp"
+    namespace = "com.moviesApp.movieDetails"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.moviesapp"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -31,6 +25,12 @@ android {
             )
         }
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
+    buildFeatures {
+        compose = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -39,48 +39,39 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
-    implementation(project(":navigation"))
-    implementation(project(":core:common"))
-    implementation(project(":features:moviesList"))
-    implementation(project(":design-system"))
+
     implementation(project(":business-models"))
+    implementation(project(":core:data"))
+    implementation(project(":core:common"))
+    implementation(project(":design-system"))
 
     implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.activity.compose)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.coroutines)
+    implementation(libs.coroutines.android)
+
     implementation(platform(libs.compose.bom))
     implementation(libs.ui)
     implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil)
 
     implementation(libs.hilt.android)
-    implementation(project(":features:movieDetails"))
+    implementation(project(":navigation"))
     kapt(libs.hilt.android.compiler)
+
+    implementation(libs.arrow)
     coreLibraryDesugaring(libs.desugar)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
-    androidTestImplementation(libs.ui.test.junit4)
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
-
 }

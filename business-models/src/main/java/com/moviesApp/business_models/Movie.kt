@@ -1,7 +1,6 @@
 package com.moviesApp.business_models
 
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 @JvmInline
 value class MovieId(val value: Int)
@@ -11,6 +10,9 @@ value class MovieTitle(val value: String)
 
 @JvmInline
 value class MoviePosterUrl(val value: String)
+
+@JvmInline
+value class BackdropUrl(val value: String)
 
 @JvmInline
 value class MovieOverview(val value: String)

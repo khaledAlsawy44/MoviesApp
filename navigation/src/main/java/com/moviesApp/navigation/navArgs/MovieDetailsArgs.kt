@@ -6,6 +6,6 @@ import com.moviesApp.navigation.NavigationArgumentsConstants
 
 fun movieDetailsNavArgs() = listOf(
     navArgument(NavigationArgumentsConstants.MOVIE_ID) {
-        type = NavType.StringType
+        type = NavType.IntType
     }
 )
