@@ -42,6 +42,7 @@ android {
 
 dependencies {
     implementation(project(":business-models"))
+    implementation(project(":design-system"))
 
     implementation(libs.core.ktx)
     implementation(libs.androidx.appcompat)

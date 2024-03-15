@@ -51,7 +51,8 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun MoviesAppTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+//    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = true,
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {

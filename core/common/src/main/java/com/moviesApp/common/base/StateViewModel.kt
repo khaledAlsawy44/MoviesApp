@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
-open class StateViewModel<State : Any, Action : Any, Effect : Any>() : ViewModel() {
+abstract class StateViewModel<State : Any, Action : Any, Effect : Any>() : ViewModel() {
 
     private val uiState: MutableState<State?> = mutableStateOf(null)
     fun uiState(): androidx.compose.runtime.State<State?> = uiState
@@ -36,5 +36,10 @@ open class StateViewModel<State : Any, Action : Any, Effect : Any>() : ViewModel
     fun setState(state: State) {
         uiState.value = state
     }
+
+    fun currentState() = uiState.value
+
+    abstract fun onAction(action: Action)
+
 }
 

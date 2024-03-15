@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
             MoviesAppTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.surface
+                    color = MaterialTheme.colorScheme.background
                 ) { MoviesApp() }
             }
         }

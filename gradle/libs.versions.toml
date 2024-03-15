@@ -23,6 +23,8 @@ okHttp-interceptor = "4.10.0"
 arrow = "1.1.2"
 coil = "2.3.0"
 hilt-navigation-compose = "1.2.0"
+desugar = "2.0.2"
+uiTooling = "1.6.3"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -61,6 +63,7 @@ retrofit-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2
 okHttp-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp-interceptor" }
 
 arrow = { group = "io.arrow-kt", name = "arrow-core", version.ref = "arrow" }
+desugar = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugar" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

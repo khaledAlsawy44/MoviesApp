@@ -22,6 +22,6 @@ fun ComponentRemoteImage(
                 .build()
         ),
         contentDescription = "",
-        contentScale = ContentScale.Fit
+        contentScale = ContentScale.Crop
     )
 }

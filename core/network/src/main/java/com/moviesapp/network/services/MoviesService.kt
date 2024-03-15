@@ -14,7 +14,8 @@ import retrofit2.http.Query
 interface MoviesService {
     @GET(API_MOVIES_LIST)
     suspend fun fetchMoviesList(
-        @Query("page") page: Int? = null
+        @Query("page") page: Int? = null,
+        @Query("sort_by") sort: String? = "title.asc"
     ): Response<PaginationResponse<MovieResponse>>
 
     @GET("$API_MOVIE_DETAILS/{$PARAMETER_MOVIE_ID}")

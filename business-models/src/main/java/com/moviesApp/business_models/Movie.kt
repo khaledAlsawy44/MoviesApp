@@ -1,5 +1,8 @@
 package com.moviesApp.business_models
 
+import java.time.LocalDate
+import java.time.LocalDateTime
+
 @JvmInline
 value class MovieId(val value: Int)
 
@@ -17,11 +20,15 @@ value class MovieRate(val value: Double)
 
 @JvmInline
 value class MovieRateCount(val value: Int)
+
+@JvmInline
+value class MovieReleaseDate(val value: LocalDate)
 data class Movie(
     val id: MovieId,
     val title: MovieTitle,
     val posterUrl: MoviePosterUrl,
     val overview: MovieOverview,
     val movieRate: MovieRate,
-    val rateCount: MovieRateCount
+    val rateCount: MovieRateCount,
+    val releaseDate: MovieReleaseDate?
 )

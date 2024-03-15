@@ -8,6 +8,7 @@ import com.moviesApp.business_models.MovieOverview
 import com.moviesApp.business_models.MoviePosterUrl
 import com.moviesApp.business_models.MovieRate
 import com.moviesApp.business_models.MovieRateCount
+import com.moviesApp.business_models.MovieReleaseDate
 import com.moviesApp.business_models.MovieStatus
 import com.moviesApp.business_models.MovieTitle
 import com.moviesApp.business_models.ProductionCompanies
@@ -16,6 +17,7 @@ import com.moviesApp.business_models.ProductionCompaniesName
 import com.moviesapp.network.BuildConfig.IMAGES_BASE_URL
 import com.moviesapp.network.entities.MovieDetailsResponse
 import com.moviesapp.network.entities.MovieResponse
+import java.text.DecimalFormat
 
 
 fun MovieResponse.toMovie(): Movie? {
@@ -26,13 +28,16 @@ fun MovieResponse.toMovie(): Movie? {
     vote_count ?: return null
     id ?: return null
 
+    val rate = DecimalFormat("#,0").format(vote_average).toDouble()
     return Movie(
         id = MovieId(id),
         title = MovieTitle(title),
         posterUrl = MoviePosterUrl("$IMAGES_BASE_URL$poster_path"),
         overview = MovieOverview(overview),
-        movieRate = MovieRate(vote_average),
-        rateCount = MovieRateCount(vote_count)
+        movieRate = MovieRate(rate),
+        rateCount = MovieRateCount(vote_count),
+        releaseDate =release_date?.let { MovieReleaseDate(release_date) }
+
     )
 }
 

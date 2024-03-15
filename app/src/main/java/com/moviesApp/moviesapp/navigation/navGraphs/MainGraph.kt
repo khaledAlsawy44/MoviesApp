@@ -17,7 +17,7 @@ fun AppNavigationGraph(
         route = Graph.Root,
         startDestination = NavigationScreens.MoviesList().destination
     ) {
-        moviesListScreen(navController)
+        moviesListScreen({})
         movieDetailsScreen(navController)
     }
 }

@@ -35,6 +35,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = "17"
@@ -45,6 +46,7 @@ dependencies {
     implementation(project(":business-models"))
     implementation(project(":core:data"))
     implementation(project(":core:common"))
+    implementation(project(":design-system"))
 
     implementation(libs.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -57,6 +59,7 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.ui)
     implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
     implementation(libs.coil)
@@ -65,6 +68,7 @@ dependencies {
     kapt(libs.hilt.android.compiler)
 
     implementation(libs.arrow)
+    coreLibraryDesugaring(libs.desugar)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
