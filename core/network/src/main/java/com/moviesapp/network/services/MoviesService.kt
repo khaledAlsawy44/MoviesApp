@@ -1,6 +1,7 @@
 package com.moviesapp.network.services
 
 import com.moviesapp.network.API_MOVIES_LIST
+import com.moviesapp.network.API_MOVIES_SEARCH
 import com.moviesapp.network.API_MOVIE_DETAILS
 import com.moviesapp.network.PARAMETER_MOVIE_ID
 import com.moviesapp.network.entities.MovieDetailsResponse
@@ -15,7 +16,14 @@ interface MoviesService {
     @GET(API_MOVIES_LIST)
     suspend fun fetchMoviesList(
         @Query("page") page: Int? = null,
-        @Query("sort_by") sort: String? = "title.asc"
+        @Query("include_adult") adults: Boolean = false
+    ): Response<PaginationResponse<MovieResponse>>
+
+    @GET(API_MOVIES_SEARCH)
+    suspend fun searchMoviesList(
+        @Query("page") page: Int? = null,
+        @Query("query") query: String? = null,
+        @Query("include_adult") adults: Boolean = false
     ): Response<PaginationResponse<MovieResponse>>
 
     @GET("$API_MOVIE_DETAILS/{$PARAMETER_MOVIE_ID}")

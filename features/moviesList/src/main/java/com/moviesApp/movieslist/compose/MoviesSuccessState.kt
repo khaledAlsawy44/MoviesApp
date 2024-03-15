@@ -1,16 +1,9 @@
 package com.moviesApp.movieslist.compose
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.moviesApp.common.compose.SearchTextFiled
-import com.moviesApp.designSystem.atoms.VerticalSpace
+import com.moviesApp.common.compose.PaginatedLazyColumn
 import com.moviesApp.movieslist.MoviesListActions
 import com.moviesApp.movieslist.MoviesListState
 
@@ -18,18 +11,12 @@ import com.moviesApp.movieslist.MoviesListState
 fun MoviesListState.Success.RenderState(
     onAction: (MoviesListActions) -> Unit
 ) {
-    var searchQuery by remember { mutableStateOf("") }
+    val listState: LazyListState = rememberLazyListState()
 
-    Column(Modifier.padding(horizontal = 16.dp)) {
-        VerticalSpace(16.dp)
-        SearchTextFiled(
-            query = searchQuery,
-            onQueryChanged = {
-                searchQuery = it
-            }
-        )
-        VerticalSpace(16.dp)
-        MoviesList(this@RenderState.movies, onAction)
-
-    }
+    movies.list.PaginatedLazyColumn(
+        listState = listState,
+        onLoadMore = { onAction.invoke(MoviesListActions.OnLoadMore) },
+        content = { MovieItem(movie = it, onAction = onAction) },
+        canLoadMore = movies.page.value < movies.totalPages.value,
+    )
 }

@@ -7,7 +7,6 @@ import com.moviesApp.business_models.PaginatedData
 import com.moviesApp.common.base.StateViewModel
 import com.moviesApp.data.repos.MoviesListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,13 +23,14 @@ class MoviesListViewModel @Inject constructor(
         when (action) {
             is MoviesListActions.OnLoadMore -> onLoadMore()
             is MoviesListActions.OnMoveClicked -> {}
+            is MoviesListActions.OnSearch -> onSearch(action)
         }
     }
 
     private fun fetchFirstMoviesPage() {
         launch {
             callApi(
-                block = { repo.getMoviesList(CurrentPage(1)) },
+                block = { repo.getMoviesList() },
                 mapErrorResult = ::onApiError,
                 mapSuccessResult = ::onFirstPageSuccess
             )
@@ -41,11 +41,29 @@ class MoviesListViewModel @Inject constructor(
         val currentState = currentStateIfSuccess() ?: return
         val currentPage = currentState.movies.page.value
         val nextPage = CurrentPage(currentPage.plus(1))
+        val searchQuery = currentState.searchQuery
         launch {
             callApi(
-                block = { repo.getMoviesList(page = nextPage) },
+                block = {
+                    if (searchQuery.isEmpty()) repo.getMoviesList(page = nextPage)
+                    else repo.searchMoviesList(page = nextPage, searchQuery = searchQuery)
+                },
                 mapErrorResult = {},
                 mapSuccessResult = ::onLoadMoreSuccess
+            )
+        }
+    }
+
+    private fun onSearch(action: MoviesListActions.OnSearch) {
+        val searchQuery = action.searchQuery
+        launch {
+            callApi(
+                block = {
+                    if (searchQuery.isEmpty()) repo.getMoviesList()
+                    else repo.searchMoviesList(searchQuery = searchQuery)
+                },
+                mapErrorResult = {},
+                mapSuccessResult = { onSearchSuccess(it, action.searchQuery) }
             )
         }
     }
@@ -62,6 +80,16 @@ class MoviesListViewModel @Inject constructor(
         setState(
             currentState.copy(
                 movies = result.copy(list = currentMoviesList.plus(newMoviesList))
+            )
+        )
+    }
+
+    private fun onSearchSuccess(result: PaginatedData<Movie>, searchQuery: String) {
+        if (result.list.isEmpty()) setState(MoviesListState.Empty)
+        else setState(
+            MoviesListState.Success(
+                movies = result,
+                searchQuery = searchQuery
             )
         )
     }

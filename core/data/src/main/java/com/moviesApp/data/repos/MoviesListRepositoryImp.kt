@@ -16,4 +16,11 @@ class MoviesListRepositoryImp @Inject constructor(
         return remoteDataSource.getMoviesList(page)
     }
 
+    override suspend fun searchMoviesList(
+        page: CurrentPage,
+        searchQuery: String
+    ): Either<AppErrors, PaginatedData<Movie>> {
+        return remoteDataSource.searchMoviesList(page, searchQuery)
+    }
+
 }

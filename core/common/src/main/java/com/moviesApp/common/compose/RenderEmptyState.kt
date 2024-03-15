@@ -13,14 +13,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.dp
+import com.moviesApp.common.R
+import com.moviesApp.designSystem.atoms.VerticalSpace
 
 @Composable
 fun RenderEmptyState(
-    title: String,
-    iconRes: Int,
+    title: String = stringResource(id = R.string.empty_result),
+    iconRes: Int = R.drawable.ic_search_not_found,
 ) {
     Column(
         verticalArrangement = Arrangement.Center,
@@ -36,12 +39,13 @@ fun RenderEmptyState(
                 .height(120.dp)
         )
         if (title.isNotBlank()) {
+            VerticalSpace(space = 16.dp)
             Text(
                 text = title,
                 modifier = Modifier
                     .wrapContentWidth(Alignment.CenterHorizontally),
-                style = MaterialTheme.typography.bodySmall.copy(
-                    color = MaterialTheme.colorScheme.onBackground,
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontWeight = FontWeight.Normal,
                     textDirection = TextDirection.Content
 

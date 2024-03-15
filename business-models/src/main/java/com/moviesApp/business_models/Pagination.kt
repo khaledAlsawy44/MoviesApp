@@ -2,7 +2,7 @@ package com.moviesApp.business_models
 
 
 @JvmInline
-value class CurrentPage(val value: Int)
+value class CurrentPage(val value: Int = 1)
 
 @JvmInline
 value class TotalPages(val value: Int)

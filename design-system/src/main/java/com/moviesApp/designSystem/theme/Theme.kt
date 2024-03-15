@@ -80,17 +80,3 @@ fun MoviesAppTheme(
     )
 }
 
-fun animateStatusBarColor(window: Window, targetColor: Int, duration: Long) {
-    val initialColor = Color(window.statusBarColor)
-
-    val colorAnimator = ValueAnimator.ofObject(ArgbEvaluator(), initialColor.toArgb(), targetColor)
-    colorAnimator.duration = duration
-
-    colorAnimator.addUpdateListener { animator ->
-        val animatedColor = animator.animatedValue as Int
-        window.statusBarColor = animatedColor
-    }
-
-    colorAnimator.start()
-}
-
